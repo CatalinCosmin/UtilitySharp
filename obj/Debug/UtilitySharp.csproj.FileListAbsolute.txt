@@ -1,0 +1,12 @@
+D:\projects\UtilitySharp\bin\Debug\UtilitySharp.exe.config
+D:\projects\UtilitySharp\bin\Debug\UtilitySharp.exe
+D:\projects\UtilitySharp\bin\Debug\UtilitySharp.pdb
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.csproj.AssemblyReference.cache
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.csproj.SuggestedBindingRedirects.cache
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Form1.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Properties.Resources.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.csproj.GenerateResource.cache
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.csproj.CoreCompileInputs.cache
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.exe
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.pdb
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.CalculatorForm.resources
