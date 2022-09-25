@@ -10,3 +10,6 @@ D:\projects\UtilitySharp\obj\Debug\UtilitySharp.csproj.CoreCompileInputs.cache
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.exe
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.pdb
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.CalculatorForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.CalendarForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlBlank.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlDays.resources

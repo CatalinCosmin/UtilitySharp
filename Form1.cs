@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using UtilitySharp.Entities;
 using UtilitySharp.Forms;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
@@ -16,11 +17,13 @@ namespace UtilitySharp
     public partial class Form1 : Form
     {
         public static Form1 instance;
+        public DatabaseManager dbInsance;
         public Form1()
         {
             instance = this;
             InitializeComponent();
             this.Location = new Point(0, 0);
+            dbInsance = new DatabaseManager();
         }
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -81,6 +84,12 @@ namespace UtilitySharp
         private void button1_Click(object sender, EventArgs e)
         {
             Form form = new CalculatorForm();
+            form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form form = new CalendarForm();
             form.Show();
         }
     }
