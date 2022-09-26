@@ -15,8 +15,10 @@ namespace UtilitySharp.Forms
     public partial class AddEventForm : Form
     {
         private int year, month, day;
-        public AddEventForm(int _year, int _month, int _day)
+        private EventOptionsForm parent;
+        public AddEventForm(EventOptionsForm _parent, int _year, int _month, int _day)
         {
+            parent = _parent;
             year = _year;
             month = _month;
             day = _day;
@@ -31,6 +33,7 @@ namespace UtilitySharp.Forms
             ev.Day = day;
             ev.Name = txtNameInput.Text;
             DatabaseManager.instance.AddEvent(ev);
+            parent.RefreshContent();
             this.Close();
         }
     }

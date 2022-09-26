@@ -38,13 +38,13 @@
             this.lbDescription.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDescription.Location = new System.Drawing.Point(3, 0);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(631, 70);
+            this.lbDescription.Size = new System.Drawing.Size(650, 70);
             this.lbDescription.TabIndex = 1;
             this.lbDescription.Text = "Prima picare de sesiune a lui stan david florin";
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(651, 12);
+            this.btnModify.Location = new System.Drawing.Point(672, 13);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(47, 43);
             this.btnModify.TabIndex = 4;
@@ -53,12 +53,13 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(704, 12);
+            this.btnRemove.Location = new System.Drawing.Point(725, 13);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(47, 43);
             this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "REM";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // UserControlEventOptions
             // 
@@ -68,7 +69,7 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lbDescription);
             this.Name = "UserControlEventOptions";
-            this.Size = new System.Drawing.Size(760, 70);
+            this.Size = new System.Drawing.Size(790, 70);
             this.Load += new System.EventHandler(this.UserControlEventOptions_Load);
             this.ResumeLayout(false);
 

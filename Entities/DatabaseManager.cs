@@ -7,13 +7,15 @@ using System.Linq.Expressions;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
+using UtilitySharp.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace UtilitySharp.Entities
 {
     public class DatabaseManager
     {
         public static DatabaseManager instance;
-        private SqlConnection con;
+        public SqlConnection con;
 
         public List<EventDate> storedEvents = new List<EventDate>();
 
@@ -39,6 +41,7 @@ namespace UtilitySharp.Entities
                         while (reader.Read())
                         {
                             EventDate e = new EventDate();
+                            e.id = reader.GetInt32(0);
                             e.Name = reader.GetString(1);
                             e.Year = reader.GetInt32(2);
                             e.Month = reader.GetInt32(3);
@@ -63,7 +66,22 @@ namespace UtilitySharp.Entities
                 cmd.Parameters.AddWithValue("@month", e.Month);
                 cmd.Parameters.AddWithValue("@day", e.Day);
 
+                int insertedID = Convert.ToInt32(cmd.ExecuteScalar());
+                e.id = insertedID;
+            }
+        }
+
+        public void RemoveEvent(int eventId)
+        {
+            using (SqlCommand cmd = new SqlCommand(@"DELETE FROM Events WHERE idEvent = @id;", con))
+            {
+                cmd.Parameters.AddWithValue("id", eventId);
                 cmd.ExecuteNonQuery();
+
+                var ev = storedEvents.First(item => item.id == eventId);
+                storedEvents.Remove(ev);
+
+                EventOptionsForm.instance.RefreshContent();
             }
         }
     }
@@ -72,6 +90,7 @@ namespace UtilitySharp.Entities
 
 public struct EventDate
 {
+    public int id;
     public string Name;
     public int Year;
     public int Month;

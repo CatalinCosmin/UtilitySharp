@@ -6,11 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using UtilitySharp.Entities;
 using UtilitySharp.Forms;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using Point = System.Drawing.Point;
 
 namespace UtilitySharp
 {
@@ -25,7 +27,9 @@ namespace UtilitySharp
             this.Location = new Point(0, 0);
             dbInstance = new DatabaseManager();
             label1.Text = dbInstance.storedEvents.Count.ToString();
+
         }
+
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -35,7 +39,7 @@ namespace UtilitySharp
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        { 
             notifyIcon1.BalloonTipTitle = "UtilitySharp";
             notifyIcon1.BalloonTipText = "I am now in system tray.";
             notifyIcon1.Text = "UtilitySharp";

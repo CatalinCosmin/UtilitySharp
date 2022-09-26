@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilitySharp.Entities;
 using UtilitySharp.Forms;
 
 namespace UtilitySharp.UserControls
@@ -23,7 +24,10 @@ namespace UtilitySharp.UserControls
 
         private void UserControlDays_Load(object sender, EventArgs e)
         {
-
+            CalendarForm inst = CalendarForm.instance;
+            if (DatabaseManager.instance.eventExists[inst.year, inst.month, value])
+                label1.Visible = true;
+            else label1.Visible = false;
         }
 
         private void AddEvent(object sender, EventArgs e)
