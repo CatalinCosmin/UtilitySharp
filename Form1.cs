@@ -88,14 +88,20 @@ namespace UtilitySharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form form = new CalculatorForm();
-            form.Show();
+            if (CalculatorForm.instance == null)
+            {
+                Form form = new CalculatorForm();
+                form.Show();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form form = new CalendarForm();
-            form.Show();
+            if (CalendarForm.instance == null)
+            { 
+                Form form = new CalendarForm();
+                form.Show();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

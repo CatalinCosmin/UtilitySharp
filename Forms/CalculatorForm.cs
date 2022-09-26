@@ -12,12 +12,16 @@ namespace UtilitySharp.Forms
 {
     public partial class CalculatorForm : Form
     {
+        public static CalculatorForm instance;
+
         private string operation = "";
         private double stored_number, second_number;
         private string last_operation = "";
 
         public CalculatorForm()
         {
+            instance = this;
+
             stored_number = 0;
             second_number = 0;
             InitializeComponent();
@@ -82,6 +86,11 @@ namespace UtilitySharp.Forms
             {
                 txtDisplay.Text = "0";
             }
+        }
+
+        private void Form_Close(object sender, FormClosedEventArgs e)
+        {
+            instance = null;
         }
 
         private void btnEquals_Click(object sender, EventArgs e)

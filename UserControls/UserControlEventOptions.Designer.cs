@@ -48,6 +48,7 @@
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(47, 43);
             this.btnModify.TabIndex = 4;
+            this.btnModify.TabStop = false;
             this.btnModify.Text = "MOD";
             this.btnModify.UseVisualStyleBackColor = true;
             // 
@@ -57,6 +58,7 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(47, 43);
             this.btnRemove.TabIndex = 3;
+            this.btnRemove.TabStop = false;
             this.btnRemove.Text = "REM";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);

@@ -24,6 +24,11 @@ namespace UtilitySharp.UserControls
 
         private void UserControlDays_Load(object sender, EventArgs e)
         {
+            LoadEventsToolTip();
+        }
+
+        public void LoadEventsToolTip()
+        {
             CalendarForm inst = CalendarForm.instance;
             if (DatabaseManager.instance.eventExists[inst.year, inst.month, value])
                 label1.Visible = true;
@@ -33,7 +38,7 @@ namespace UtilitySharp.UserControls
         private void AddEvent(object sender, EventArgs e)
         {
             CalendarForm inst = CalendarForm.instance;
-            EventOptionsForm form = new EventOptionsForm(inst.year, inst.month, value);
+            EventOptionsForm form = new EventOptionsForm(this, inst.year, inst.month, value);
             //Form form = new AddEventForm(inst.year, inst.month, value);
             form.ShowDialog();
         }

@@ -114,6 +114,12 @@
     <Compile Include="UserControls\UserControlBlank.Designer.cs">
       <DependentUpon>UserControlBlank.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlCountdown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCountdown.Designer.cs">
+      <DependentUpon>UserControlCountdown.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlDays.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,12 @@
     </Compile>
     <Compile Include="UserControls\UserControlEventOptions.Designer.cs">
       <DependentUpon>UserControlEventOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlStopwatch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlStopwatch.Designer.cs">
+      <DependentUpon>UserControlStopwatch.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -157,11 +169,17 @@
     <EmbeddedResource Include="UserControls\UserControlBlank.resx">
       <DependentUpon>UserControlBlank.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlCountdown.resx">
+      <DependentUpon>UserControlCountdown.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlDays.resx">
       <DependentUpon>UserControlDays.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlEventOptions.resx">
       <DependentUpon>UserControlEventOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlStopwatch.resx">
+      <DependentUpon>UserControlStopwatch.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="databaseDataSet.xsc">
       <DependentUpon>databaseDataSet.xsd</DependentUpon>

@@ -177,6 +177,7 @@
             this.Name = "CalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CalendarForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Close);
             this.Load += new System.EventHandler(this.CalendarForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

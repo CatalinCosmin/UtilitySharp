@@ -17,6 +17,7 @@ namespace UtilitySharp.Forms
     public partial class EventOptionsForm : Form
     {
         public static EventOptionsForm instance;
+        private UserControlDays parent;
 
         private int year, month, day;
 
@@ -28,9 +29,10 @@ namespace UtilitySharp.Forms
             
         }
 
-        public EventOptionsForm(int _year, int _month, int _day)
+        public EventOptionsForm(UserControlDays _parent, int _year, int _month, int _day)
         {
             instance = this;
+            parent = _parent;
 
             year = _year;
             month = _month;
@@ -46,13 +48,17 @@ namespace UtilitySharp.Forms
         public void RefreshContent()
         {
             eventsListPanel.Controls.Clear();
-            foreach (var ucevent in from EventDate eventDate in DatabaseManager.instance.storedEvents
-                                    where eventDate.Year == year && eventDate.Month == month && eventDate.Day == day
-                                    let ucevent = new UserControlEventOptions(eventDate.id, eventDate.Name)
-                                    select ucevent)
+            foreach (EventDate eventDate in DatabaseManager.instance.storedEvents)
             {
-                eventsListPanel.Controls.Add(ucevent);
+                if (eventDate.Year == year && eventDate.Month == month && eventDate.Day == day)
+                {
+                    UserControlEventOptions ucevent = new UserControlEventOptions(eventDate);
+                    eventsListPanel.Controls.Add(ucevent);
+                }
             }
+
+            DatabaseManager.instance.eventExists[year, month, day] = (eventsListPanel.Controls.Count > 0);
+            parent.LoadEventsToolTip();
         }
     }
 }

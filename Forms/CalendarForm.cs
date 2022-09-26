@@ -96,6 +96,11 @@ namespace UtilitySharp.Forms
             displayDays();
         }
 
+        private void Form_Close(object sender, FormClosedEventArgs e)
+        {
+            instance = null;
+        }
+
         private string MonthName(int month)
         {
             return new DateTime(year, month, 1).ToString("MMM");

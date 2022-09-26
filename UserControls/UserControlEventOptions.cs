@@ -15,24 +15,22 @@ namespace UtilitySharp.UserControls
 {
     public partial class UserControlEventOptions : UserControl
     {
-        int eventId;
-        string description;
+        EventDate eventDate;
 
-        public UserControlEventOptions(int id, string _description)
+        public UserControlEventOptions(EventDate _eventDate)
         {
-            eventId = id;
-            description = _description;
+            eventDate = _eventDate;
             InitializeComponent();
         }
 
         private void UserControlEventOptions_Load(object sender, EventArgs e)
         {
-            lbDescription.Text = description;
+            lbDescription.Text = eventDate.Name;
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            DatabaseManager.instance.RemoveEvent(eventId);
+            DatabaseManager.instance.RemoveEvent(eventDate.id);
         }
     }
 }

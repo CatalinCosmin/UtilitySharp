@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilitySharp.UserControls;
 
 namespace UtilitySharp.Forms
 {
     public partial class TimerForm : Form
     {
         private DateTime currentTime;
-        Timer t = null;
+        private Timer t = null;
         public TimerForm()
         {
             InitializeComponent();
@@ -33,6 +34,20 @@ namespace UtilitySharp.Forms
         private void t_tick(object sender, EventArgs e)
         {
             timeDisplay.Text = DateTime.Now.ToString();
+        }
+
+        private void stopwatchBtn_Click(object sender, EventArgs e)
+        {
+            UserControlStopwatch usstopwatch = new UserControlStopwatch();
+            functionsPanel.Controls.Clear();
+            functionsPanel.Controls.Add(usstopwatch);
+        }
+
+        private void countdownBtn_Click(object sender, EventArgs e)
+        {
+            UserControlCountdown uscountdown = new UserControlCountdown();
+            functionsPanel.Controls.Clear();
+            functionsPanel.Controls.Add(uscountdown);
         }
     }
 }
