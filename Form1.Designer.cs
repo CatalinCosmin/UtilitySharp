@@ -36,9 +36,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.timerBtn = new System.Windows.Forms.Button();
+            this.cldnBtn = new System.Windows.Forms.Button();
+            this.calcBtn = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.servicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,9 +62,9 @@
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.timerBtn);
+            this.panel1.Controls.Add(this.cldnBtn);
+            this.panel1.Controls.Add(this.calcBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -133,47 +133,47 @@
             this.button4.TabStop = false;
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // timerBtn
             // 
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = global::UtilitySharp.Properties.Resources.timer_icon;
-            this.button3.Location = new System.Drawing.Point(172, 12);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 74);
-            this.button3.TabIndex = 2;
-            this.button3.TabStop = false;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.timerBtn.AutoSize = true;
+            this.timerBtn.BackColor = System.Drawing.Color.Transparent;
+            this.timerBtn.BackgroundImage = global::UtilitySharp.Properties.Resources.timer_icon;
+            this.timerBtn.Location = new System.Drawing.Point(172, 12);
+            this.timerBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.timerBtn.Name = "timerBtn";
+            this.timerBtn.Size = new System.Drawing.Size(80, 74);
+            this.timerBtn.TabIndex = 2;
+            this.timerBtn.TabStop = false;
+            this.timerBtn.UseVisualStyleBackColor = false;
+            this.timerBtn.Click += new System.EventHandler(this.timerBtn_Click);
             // 
-            // button2
+            // cldnBtn
             // 
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::UtilitySharp.Properties.Resources.calendar_icon;
-            this.button2.Location = new System.Drawing.Point(92, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 74);
-            this.button2.TabIndex = 1;
-            this.button2.TabStop = false;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cldnBtn.AutoSize = true;
+            this.cldnBtn.BackColor = System.Drawing.Color.Transparent;
+            this.cldnBtn.BackgroundImage = global::UtilitySharp.Properties.Resources.calendar_icon;
+            this.cldnBtn.Location = new System.Drawing.Point(92, 12);
+            this.cldnBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.cldnBtn.Name = "cldnBtn";
+            this.cldnBtn.Size = new System.Drawing.Size(80, 74);
+            this.cldnBtn.TabIndex = 1;
+            this.cldnBtn.TabStop = false;
+            this.cldnBtn.UseVisualStyleBackColor = false;
+            this.cldnBtn.Click += new System.EventHandler(this.cldnBtn_Click);
             // 
-            // button1
+            // calcBtn
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::UtilitySharp.Properties.Resources.calc_icon;
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 74);
-            this.button1.TabIndex = 0;
-            this.button1.TabStop = false;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.calcBtn.AutoSize = true;
+            this.calcBtn.BackColor = System.Drawing.Color.Transparent;
+            this.calcBtn.BackgroundImage = global::UtilitySharp.Properties.Resources.calc_icon;
+            this.calcBtn.Location = new System.Drawing.Point(12, 12);
+            this.calcBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.calcBtn.Name = "calcBtn";
+            this.calcBtn.Size = new System.Drawing.Size(80, 74);
+            this.calcBtn.TabIndex = 0;
+            this.calcBtn.TabStop = false;
+            this.calcBtn.UseVisualStyleBackColor = false;
+            this.calcBtn.Click += new System.EventHandler(this.calcBtn_Click);
             // 
             // notifyIcon1
             // 
@@ -192,7 +192,7 @@
             this.settingsToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 100);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 128);
             // 
             // servicesToolStripMenuItem
             // 
@@ -204,64 +204,67 @@
             this.toDoListToolStripMenuItem,
             this.shortcutsToolStripMenuItem});
             this.servicesToolStripMenuItem.Name = "servicesToolStripMenuItem";
-            this.servicesToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.servicesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.servicesToolStripMenuItem.Text = "Services";
             // 
             // calculatorToolStripMenuItem
             // 
             this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
             // calendarToolStripMenuItem
             // 
             this.calendarToolStripMenuItem.Name = "calendarToolStripMenuItem";
-            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.calendarToolStripMenuItem.Text = "Calendar";
+            this.calendarToolStripMenuItem.Click += new System.EventHandler(this.calendarToolStripMenuItem_Click);
             // 
             // timerToolStripMenuItem
             // 
             this.timerToolStripMenuItem.Name = "timerToolStripMenuItem";
-            this.timerToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.timerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.timerToolStripMenuItem.Text = "Timer";
+            this.timerToolStripMenuItem.Click += new System.EventHandler(this.timerToolStripMenuItem_Click);
             // 
             // notesToolStripMenuItem
             // 
             this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
-            this.notesToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.notesToolStripMenuItem.Text = "Notes";
             // 
             // toDoListToolStripMenuItem
             // 
             this.toDoListToolStripMenuItem.Name = "toDoListToolStripMenuItem";
-            this.toDoListToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.toDoListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.toDoListToolStripMenuItem.Text = "To do list";
             this.toDoListToolStripMenuItem.Click += new System.EventHandler(this.toDoListToolStripMenuItem_Click);
             // 
             // shortcutsToolStripMenuItem
             // 
             this.shortcutsToolStripMenuItem.Name = "shortcutsToolStripMenuItem";
-            this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.shortcutsToolStripMenuItem.Text = "Web Shortcuts";
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -292,13 +295,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button calcBtn;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button timerBtn;
+        private System.Windows.Forms.Button cldnBtn;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;

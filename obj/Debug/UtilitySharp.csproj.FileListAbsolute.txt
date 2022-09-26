@@ -18,3 +18,4 @@ D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.AddEventForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.EventOptionsForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlEventOptions.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlStopwatch.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlCountdown.resources

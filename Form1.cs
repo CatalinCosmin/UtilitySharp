@@ -86,7 +86,7 @@ namespace UtilitySharp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void calcBtn_Click(object sender, EventArgs e)
         {
             if (CalculatorForm.instance == null)
             {
@@ -95,7 +95,7 @@ namespace UtilitySharp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cldnBtn_Click(object sender, EventArgs e)
         {
             if (CalendarForm.instance == null)
             { 
@@ -104,10 +104,25 @@ namespace UtilitySharp
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void timerBtn_Click(object sender, EventArgs e)
         {
             Form form = new TimerForm();
             form.Show();
+        }
+
+        private void calculatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            calcBtn_Click(sender, new EventArgs());
+        }
+
+        private void calendarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cldnBtn_Click(sender, new EventArgs());
+        }
+
+        private void timerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timerBtn_Click(sender, new EventArgs());
         }
     }
 }
