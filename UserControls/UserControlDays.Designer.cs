@@ -51,6 +51,7 @@
             this.Name = "UserControlDays";
             this.Size = new System.Drawing.Size(125, 100);
             this.Load += new System.EventHandler(this.UserControlDays_Load);
+            this.DoubleClick += new System.EventHandler(this.AddEvent);
             this.ResumeLayout(false);
 
         }

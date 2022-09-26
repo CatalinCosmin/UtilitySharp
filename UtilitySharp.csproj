@@ -75,6 +75,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddEventForm.Designer.cs">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CalculatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,18 @@
     </Compile>
     <Compile Include="Forms\CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EventOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EventOptionsForm.Designer.cs">
+      <DependentUpon>EventOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TimerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TimerForm.Designer.cs">
+      <DependentUpon>TimerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,14 +119,29 @@
     <Compile Include="UserControls\UserControlDays.Designer.cs">
       <DependentUpon>UserControlDays.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlEventOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlEventOptions.Designer.cs">
+      <DependentUpon>UserControlEventOptions.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddEventForm.resx">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CalculatorForm.resx">
       <DependentUpon>CalculatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EventOptionsForm.resx">
+      <DependentUpon>EventOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TimerForm.resx">
+      <DependentUpon>TimerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlDays.resx">
       <DependentUpon>UserControlDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlEventOptions.resx">
+      <DependentUpon>UserControlEventOptions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="databaseDataSet.xsc">
       <DependentUpon>databaseDataSet.xsd</DependentUpon>

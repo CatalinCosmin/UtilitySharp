@@ -13,3 +13,7 @@ D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.CalculatorForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.CalendarForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlBlank.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlDays.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.TimerForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.AddEventForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.EventOptionsForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlEventOptions.resources

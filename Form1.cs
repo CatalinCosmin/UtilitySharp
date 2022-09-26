@@ -17,13 +17,14 @@ namespace UtilitySharp
     public partial class Form1 : Form
     {
         public static Form1 instance;
-        public DatabaseManager dbInsance;
+        public DatabaseManager dbInstance;
         public Form1()
         {
             instance = this;
             InitializeComponent();
             this.Location = new Point(0, 0);
-            dbInsance = new DatabaseManager();
+            dbInstance = new DatabaseManager();
+            label1.Text = dbInstance.storedEvents.Count.ToString();
         }
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -90,6 +91,12 @@ namespace UtilitySharp
         private void button2_Click(object sender, EventArgs e)
         {
             Form form = new CalendarForm();
+            form.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form form = new TimerForm();
             form.Show();
         }
     }

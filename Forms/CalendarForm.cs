@@ -14,10 +14,13 @@ namespace UtilitySharp.Forms
 {
     public partial class CalendarForm : Form
     {
-        private int month, year;
+
+        public static CalendarForm instance;
+        public int month, year;
 
         public CalendarForm()
         {
+            instance = this;
             InitializeComponent();
         }
 
