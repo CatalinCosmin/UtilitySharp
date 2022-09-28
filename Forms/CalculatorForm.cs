@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilitySharp.Entities;
 
 namespace UtilitySharp.Forms
 {
@@ -25,6 +26,21 @@ namespace UtilitySharp.Forms
             stored_number = 0;
             second_number = 0;
             InitializeComponent();
+            InitColors();
+        }
+
+        private void InitColors()
+        {
+            this.BackColor = SettingsManager.instance.backColor;
+            storedTxtDisplay.BackColor = SettingsManager.instance.backColor;
+            txtDisplay.BackColor = SettingsManager.instance.backColor;
+            storedTxtDisplay.ForeColor = SettingsManager.instance.backFontColor;
+            txtDisplay.ForeColor = SettingsManager.instance.backFontColor;
+            foreach(Button btn in this.Controls.OfType<Button>())
+            {
+                btn.BackColor = SettingsManager.instance.controlsColor;
+                btn.ForeColor = SettingsManager.instance.controlsFontColor;
+            }
         }
 
         private void NumericValue(object sender, EventArgs e)

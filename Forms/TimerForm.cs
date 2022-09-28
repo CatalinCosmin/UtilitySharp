@@ -7,20 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilitySharp.Entities;
 using UtilitySharp.UserControls;
 
 namespace UtilitySharp.Forms
 {
     public partial class TimerForm : Form
     {
+        public static TimerForm instance;
+
         private DateTime currentTime;
         private Timer t = null;
         public TimerForm()
         {
+            instance = this;
             InitializeComponent();
+            InitColors();
             currentTime = DateTime.Now;
 
             StartTimer();
+        }
+
+        private void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+            this.BackColor = stinst.backColor;
+            
+            timeDisplay.BackColor = stinst.backColor;
+            timeDisplay.ForeColor = stinst.backFontColor;
+
+            textBox1.BackColor = stinst.backColor;
+            textBox1.ForeColor = stinst.backFontColor;
+
+            liveHourPanel.BackColor = stinst.backColor;
+
+            stopwatchBtn.BackColor = stinst.controlsColor;
+            stopwatchBtn.ForeColor = stinst.controlsFontColor;
+
+            countdownBtn.BackColor = stinst.controlsColor;
+            countdownBtn.ForeColor = stinst.controlsFontColor;
+
+
         }
 
         private void StartTimer()
@@ -48,6 +75,11 @@ namespace UtilitySharp.Forms
             UserControlCountdown uscountdown = new UserControlCountdown();
             functionsPanel.Controls.Clear();
             functionsPanel.Controls.Add(uscountdown);
+        }
+
+        private void Form_Close(object sender, FormClosedEventArgs e)
+        {
+            instance = null;
         }
     }
 }

@@ -31,10 +31,19 @@ namespace UtilitySharp.UserControls
         {
             CalendarForm inst = CalendarForm.instance;
             if (DatabaseManager.instance.eventExists[inst.year, inst.month, value])
+            {
                 label1.Visible = true;
-            else label1.Visible = false;
+                this.BackColor = SettingsManager.instance.highlightedControlsColor;
+            }
+            else
+            {
+                label1.Visible = false;
+                this.BackColor = SettingsManager.instance.controlsColor;
+            }
+            daysText.ForeColor = SettingsManager.instance.controlsFontColor;
+            label1.ForeColor = SettingsManager.instance.controlsFontColor;
+            daysText.ForeColor = SettingsManager.instance.controlsFontColor;
         }
-
         private void AddEvent(object sender, EventArgs e)
         {
             CalendarForm inst = CalendarForm.instance;

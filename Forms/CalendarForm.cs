@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilitySharp.Entities;
 using UtilitySharp.UserControls;
 
 namespace UtilitySharp.Forms
@@ -26,12 +27,31 @@ namespace UtilitySharp.Forms
 
         private void CalendarForm_Load(object sender, EventArgs e)
         {
+            InitColors();
+
             DateTime now = DateTime.Now;
 
             month = now.Month;
             year = now.Year;
 
             displayDays();
+        }
+
+        private void InitColors()
+        {
+            this.BackColor = SettingsManager.instance.backColor;
+            btnPrev.BackColor = SettingsManager.instance.controlsColor;
+            btnPrev.ForeColor = SettingsManager.instance.controlsFontColor;
+            btnNext.BackColor = SettingsManager.instance.controlsColor;
+            btnNext.ForeColor = SettingsManager.instance.controlsFontColor;
+            label1.ForeColor = SettingsManager.instance.backFontColor;
+            label2.ForeColor = SettingsManager.instance.backFontColor;
+            label3.ForeColor = SettingsManager.instance.backFontColor;
+            label4.ForeColor = SettingsManager.instance.backFontColor;
+            label5.ForeColor = SettingsManager.instance.backFontColor;
+            label6.ForeColor = SettingsManager.instance.backFontColor;
+            label7.ForeColor = SettingsManager.instance.backFontColor;
+            lbyearmonth.ForeColor = SettingsManager.instance.backFontColor;
         }
 
         private void displayDays()

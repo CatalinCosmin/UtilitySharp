@@ -19,3 +19,8 @@ D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.EventOptionsForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlEventOptions.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlStopwatch.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlCountdown.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.NotesForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlNotePreview.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.NotePreviewForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.SettingsForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlColorPicker.resources

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UtilitySharp.Entities;
 
 namespace UtilitySharp.UserControls
 {
@@ -16,6 +17,10 @@ namespace UtilitySharp.UserControls
         {
             InitializeComponent();
             daysText.Text = number.ToString();
+            Color color = SettingsManager.instance.controlsColor;
+            this.BackColor = Color.FromArgb(125, color);
+
+            daysText.ForeColor = SettingsManager.instance.controlsFontColor;
         }
 
         public void SetDayNumber(int number)

@@ -33,6 +33,7 @@
             // 
             // daysText
             // 
+            this.daysText.BackColor = System.Drawing.Color.Transparent;
             this.daysText.Font = new System.Drawing.Font("Impact", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.daysText.ForeColor = System.Drawing.Color.White;
             this.daysText.Location = new System.Drawing.Point(5, 5);

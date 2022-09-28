@@ -13,6 +13,8 @@ using UtilitySharp.Entities;
 using UtilitySharp.Forms;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Point = System.Drawing.Point;
+using Microsoft.Win32;
+using Application = System.Windows.Forms.Application;
 
 namespace UtilitySharp
 {
@@ -20,16 +22,27 @@ namespace UtilitySharp
     {
         public static Form1 instance;
         public DatabaseManager dbInstance;
+        public SettingsManager settingsInstance;
         public Form1()
         {
             instance = this;
             InitializeComponent();
             this.Location = new Point(0, 0);
             dbInstance = new DatabaseManager();
-            label1.Text = dbInstance.storedEvents.Count.ToString();
+            settingsInstance = new SettingsManager();
 
+            SetStartup();
         }
 
+        public void SetStartup()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (SettingsManager.instance.runOnStartup == true)
+                rk.SetValue("UtilitySharp", Application.ExecutablePath);
+            else
+                rk.DeleteValue("UtilitySharp", false);
+        }
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -54,16 +67,20 @@ namespace UtilitySharp
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if(WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1);
-            }
-            else if(this.WindowState == FormWindowState.Normal)
-            {
-                notifyIcon1.Visible = false;
-            }
+            if(SettingsManager.instance != null)
+                if (SettingsManager.instance.systemTray == true)
+                {
+                    if (WindowState == FormWindowState.Minimized)
+                    {
+                        this.Hide();
+                        notifyIcon1.Visible = true;
+                        notifyIcon1.ShowBalloonTip(1);
+                    }
+                    else if (this.WindowState == FormWindowState.Normal)
+                    {
+                        notifyIcon1.Visible = false;
+                    }
+                }
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,8 +123,11 @@ namespace UtilitySharp
 
         private void timerBtn_Click(object sender, EventArgs e)
         {
-            Form form = new TimerForm();
-            form.Show();
+            if (TimerForm.instance == null)
+            {
+                Form form = new TimerForm();
+                form.Show();
+            }
         }
 
         private void calculatorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -123,6 +143,24 @@ namespace UtilitySharp
         private void timerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timerBtn_Click(sender, new EventArgs());
+        }
+
+        private void notesBtn_Click(object sender, EventArgs e)
+        {
+            if (NotesForm.instance == null)
+            {
+                Form form = new NotesForm();
+                form.Show();
+            }
+        }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            if(SettingsForm.instance == null)
+            {
+                Form form = new SettingsForm();
+                form.ShowDialog();
+            }
         }
     }
 }

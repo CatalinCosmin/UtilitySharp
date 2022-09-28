@@ -57,10 +57,10 @@
             // 
             this.timeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.timeDisplay.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeDisplay.Location = new System.Drawing.Point(444, 60);
+            this.timeDisplay.Location = new System.Drawing.Point(409, 60);
             this.timeDisplay.Name = "timeDisplay";
             this.timeDisplay.ReadOnly = true;
-            this.timeDisplay.Size = new System.Drawing.Size(304, 37);
+            this.timeDisplay.Size = new System.Drawing.Size(339, 37);
             this.timeDisplay.TabIndex = 2;
             this.timeDisplay.TabStop = false;
             // 

@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.TextFormatting;
 using UtilitySharp.Entities;
+using Color = System.Drawing.Color;
 
 namespace UtilitySharp.UserControls
 {
@@ -19,6 +22,20 @@ namespace UtilitySharp.UserControls
         public UserControlCountdown()
         {
             InitializeComponent();
+            InitColors();
+        }
+
+        private void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+
+            this.BackColor = stinst.backColor;
+
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = stinst.backFontColor;
+
+            eventsDropdown.BackColor = stinst.controlsColor;
+            eventsDropdown.ForeColor = stinst.controlsFontColor;
         }
 
         private void UserControlCountdown_Load(object sender, EventArgs e)
@@ -37,7 +54,14 @@ namespace UtilitySharp.UserControls
             EventDate ev = events.ElementAt(id);
 
             eventToDateTime = new DateTime(ev.Year, ev.Month, ev.Day);
-            StartTimer();
+
+            if (DateTime.Now < eventToDateTime)
+                StartTimer();
+            else
+            {
+                TimeSpan passed = eventToDateTime - DateTime.Now;
+                timeDisplay.Text = "Event passed " + passed.ToString("%d") + " days ago";
+            }
         }
 
         private void StartTimer()

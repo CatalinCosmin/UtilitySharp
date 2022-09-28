@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.settingsBtn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.notesBtn = new System.Windows.Forms.Button();
             this.timerBtn = new System.Windows.Forms.Button();
             this.cldnBtn = new System.Windows.Forms.Button();
             this.calcBtn = new System.Windows.Forms.Button();
@@ -58,10 +58,10 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.settingsBtn);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.notesBtn);
             this.panel1.Controls.Add(this.timerBtn);
             this.panel1.Controls.Add(this.cldnBtn);
             this.panel1.Controls.Add(this.calcBtn);
@@ -81,18 +81,19 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "label1";
             // 
-            // button7
+            // settingsBtn
             // 
-            this.button7.AutoSize = true;
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.BackgroundImage = global::UtilitySharp.Properties.Resources.settings_icon;
-            this.button7.Location = new System.Drawing.Point(492, 14);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(80, 74);
-            this.button7.TabIndex = 6;
-            this.button7.TabStop = false;
-            this.button7.UseVisualStyleBackColor = false;
+            this.settingsBtn.AutoSize = true;
+            this.settingsBtn.BackColor = System.Drawing.Color.Transparent;
+            this.settingsBtn.BackgroundImage = global::UtilitySharp.Properties.Resources.settings_icon;
+            this.settingsBtn.Location = new System.Drawing.Point(492, 14);
+            this.settingsBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.settingsBtn.Name = "settingsBtn";
+            this.settingsBtn.Size = new System.Drawing.Size(80, 74);
+            this.settingsBtn.TabIndex = 6;
+            this.settingsBtn.TabStop = false;
+            this.settingsBtn.UseVisualStyleBackColor = false;
+            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
             // button6
             // 
@@ -120,18 +121,19 @@
             this.button5.TabStop = false;
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // notesBtn
             // 
-            this.button4.AutoSize = true;
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImage = global::UtilitySharp.Properties.Resources.notes_icon;
-            this.button4.Location = new System.Drawing.Point(252, 12);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 74);
-            this.button4.TabIndex = 3;
-            this.button4.TabStop = false;
-            this.button4.UseVisualStyleBackColor = false;
+            this.notesBtn.AutoSize = true;
+            this.notesBtn.BackColor = System.Drawing.Color.Transparent;
+            this.notesBtn.BackgroundImage = global::UtilitySharp.Properties.Resources.notes_icon;
+            this.notesBtn.Location = new System.Drawing.Point(252, 12);
+            this.notesBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.notesBtn.Name = "notesBtn";
+            this.notesBtn.Size = new System.Drawing.Size(80, 74);
+            this.notesBtn.TabIndex = 3;
+            this.notesBtn.TabStop = false;
+            this.notesBtn.UseVisualStyleBackColor = false;
+            this.notesBtn.Click += new System.EventHandler(this.notesBtn_Click);
             // 
             // timerBtn
             // 
@@ -192,7 +194,7 @@
             this.settingsToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 128);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 100);
             // 
             // servicesToolStripMenuItem
             // 
@@ -204,67 +206,67 @@
             this.toDoListToolStripMenuItem,
             this.shortcutsToolStripMenuItem});
             this.servicesToolStripMenuItem.Name = "servicesToolStripMenuItem";
-            this.servicesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.servicesToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
             this.servicesToolStripMenuItem.Text = "Services";
             // 
             // calculatorToolStripMenuItem
             // 
             this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
-            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.calculatorToolStripMenuItem.Text = "Calculator";
             this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
             // calendarToolStripMenuItem
             // 
             this.calendarToolStripMenuItem.Name = "calendarToolStripMenuItem";
-            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.calendarToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.calendarToolStripMenuItem.Text = "Calendar";
             this.calendarToolStripMenuItem.Click += new System.EventHandler(this.calendarToolStripMenuItem_Click);
             // 
             // timerToolStripMenuItem
             // 
             this.timerToolStripMenuItem.Name = "timerToolStripMenuItem";
-            this.timerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.timerToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.timerToolStripMenuItem.Text = "Timer";
             this.timerToolStripMenuItem.Click += new System.EventHandler(this.timerToolStripMenuItem_Click);
             // 
             // notesToolStripMenuItem
             // 
             this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
-            this.notesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.notesToolStripMenuItem.Text = "Notes";
             // 
             // toDoListToolStripMenuItem
             // 
             this.toDoListToolStripMenuItem.Name = "toDoListToolStripMenuItem";
-            this.toDoListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toDoListToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.toDoListToolStripMenuItem.Text = "To do list";
             this.toDoListToolStripMenuItem.Click += new System.EventHandler(this.toDoListToolStripMenuItem_Click);
             // 
             // shortcutsToolStripMenuItem
             // 
             this.shortcutsToolStripMenuItem.Name = "shortcutsToolStripMenuItem";
-            this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.shortcutsToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.shortcutsToolStripMenuItem.Text = "Web Shortcuts";
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -296,10 +298,10 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button calcBtn;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button notesBtn;
         private System.Windows.Forms.Button timerBtn;
         private System.Windows.Forms.Button cldnBtn;
         private System.Windows.Forms.NotifyIcon notifyIcon1;

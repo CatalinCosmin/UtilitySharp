@@ -33,7 +33,7 @@
             this.lapBtn = new System.Windows.Forms.Button();
             this.pauseBtn = new System.Windows.Forms.Button();
             this.lapsPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timeDisplay
@@ -91,23 +91,23 @@
             this.lapsPanel.Size = new System.Drawing.Size(223, 138);
             this.lapsPanel.TabIndex = 5;
             // 
-            // button4
+            // clearBtn
             // 
-            this.button4.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(346, 272);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(99, 41);
-            this.button4.TabIndex = 6;
-            this.button4.TabStop = false;
-            this.button4.Text = "Clear";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.clearBtn_Click);
+            this.clearBtn.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBtn.Location = new System.Drawing.Point(346, 272);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(99, 41);
+            this.clearBtn.TabIndex = 6;
+            this.clearBtn.TabStop = false;
+            this.clearBtn.Text = "Clear";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // UserControlStopwatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.lapsPanel);
             this.Controls.Add(this.pauseBtn);
             this.Controls.Add(this.lapBtn);
@@ -128,6 +128,6 @@
         private System.Windows.Forms.Button lapBtn;
         private System.Windows.Forms.Button pauseBtn;
         private System.Windows.Forms.FlowLayoutPanel lapsPanel;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button clearBtn;
     }
 }

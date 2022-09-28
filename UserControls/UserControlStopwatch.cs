@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using UtilitySharp.Entities;
 using Timer = System.Windows.Forms.Timer;
 
 namespace UtilitySharp.UserControls
@@ -15,13 +16,37 @@ namespace UtilitySharp.UserControls
     public partial class UserControlStopwatch : UserControl
     {
         private DateTime initTime;
-        private DateTime now;
         private TimeSpan current;
         private Timer t = null;
         private bool cleared = true;
         public UserControlStopwatch()
         {
             InitializeComponent();
+            InitColors();
+        }
+
+        private void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+
+            this.BackColor = stinst.backColor;
+
+            timeDisplay.BackColor = stinst.backColor;
+            timeDisplay.ForeColor = stinst.backFontColor;
+
+            startBtn.BackColor = stinst.controlsColor;
+            startBtn.ForeColor = stinst.controlsFontColor;
+
+            lapBtn.BackColor = stinst.controlsColor;
+            lapBtn.ForeColor = stinst.controlsFontColor;
+
+            pauseBtn.BackColor = stinst.controlsColor;
+            pauseBtn.ForeColor = stinst.controlsFontColor;
+
+            clearBtn.BackColor = stinst.controlsColor;
+            clearBtn.ForeColor = stinst.controlsFontColor;
+
+            lapsPanel.BackColor = stinst.backColor;
         }
 
         private void UserControlStopwatch_Load(object sender, EventArgs e)
@@ -61,6 +86,8 @@ namespace UtilitySharp.UserControls
             Label label = new Label();
             label.Font = new Font("Impact", 10);
             label.Text = current.ToString(@"hh\:mm\:ss\.fff");
+            label.BackColor = Color.Transparent;
+            label.ForeColor = SettingsManager.instance.backFontColor;
             lapsPanel.Controls.Add(label);
         }
 

@@ -51,7 +51,9 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +72,7 @@
       <DependentUpon>databaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Entities\DatabaseManager.cs" />
+    <Compile Include="Entities\SettingsManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +103,24 @@
     <Compile Include="Forms\EventOptionsForm.Designer.cs">
       <DependentUpon>EventOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NotePreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NotePreviewForm.Designer.cs">
+      <DependentUpon>NotePreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NotesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NotesForm.Designer.cs">
+      <DependentUpon>NotesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TimerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +134,12 @@
     </Compile>
     <Compile Include="UserControls\UserControlBlank.Designer.cs">
       <DependentUpon>UserControlBlank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlColorPicker.Designer.cs">
+      <DependentUpon>UserControlColorPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControlCountdown.cs">
       <SubType>UserControl</SubType>
@@ -131,6 +158,12 @@
     </Compile>
     <Compile Include="UserControls\UserControlEventOptions.Designer.cs">
       <DependentUpon>UserControlEventOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlNotePreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlNotePreview.Designer.cs">
+      <DependentUpon>UserControlNotePreview.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControlStopwatch.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +186,15 @@
     <EmbeddedResource Include="Forms\EventOptionsForm.resx">
       <DependentUpon>EventOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NotePreviewForm.resx">
+      <DependentUpon>NotePreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NotesForm.resx">
+      <DependentUpon>NotesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TimerForm.resx">
       <DependentUpon>TimerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +211,9 @@
     <EmbeddedResource Include="UserControls\UserControlBlank.resx">
       <DependentUpon>UserControlBlank.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlColorPicker.resx">
+      <DependentUpon>UserControlColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlCountdown.resx">
       <DependentUpon>UserControlCountdown.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,9 +223,13 @@
     <EmbeddedResource Include="UserControls\UserControlEventOptions.resx">
       <DependentUpon>UserControlEventOptions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlNotePreview.resx">
+      <DependentUpon>UserControlNotePreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlStopwatch.resx">
       <DependentUpon>UserControlStopwatch.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="config.cfg" />
     <None Include="databaseDataSet.xsc">
       <DependentUpon>databaseDataSet.xsd</DependentUpon>
     </None>

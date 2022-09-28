@@ -21,6 +21,8 @@ namespace UtilitySharp.Entities
 
         public bool[,,] eventExists = new bool[2150, 13, 32];
 
+        public List<Note> storedNotes = new List<Note>();
+
         
         public DatabaseManager()
         {
@@ -28,6 +30,7 @@ namespace UtilitySharp.Entities
             con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\database.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
             InitEvents();
+            InitNotes();
         }
 
         private void InitEvents()
@@ -84,6 +87,77 @@ namespace UtilitySharp.Entities
                 EventOptionsForm.instance.RefreshContent();
             }
         }
+
+        public void InitNotes()
+        {
+            using (SqlCommand cmd = new SqlCommand(@"SELECT * FROM Notes", con))
+            {
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if(reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            Note note = new Note();
+                            note.id = reader.GetInt32(0);
+                            note.Title = reader.GetString(1);
+                            note.Content = reader.GetString(2);
+                            storedNotes.Add(note);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void AddNote(Note note)
+        {
+            storedNotes.Add(note);
+            using (SqlCommand cmd = new SqlCommand(@"INSERT INTO Notes (Title, Content) VALUES (@title, @content)", DatabaseManager.instance.con))
+            {
+                cmd.Parameters.AddWithValue("@title", note.Title);
+                cmd.Parameters.AddWithValue("@content", note.Content);
+
+                int insertedID = Convert.ToInt32(cmd.ExecuteScalar());
+                note.id = insertedID;
+                NotesForm.instance.RefreshNotes();
+            }
+        }
+
+        public void RemoveNote(int id)
+        {
+            using(SqlCommand cmd = new SqlCommand(@"DELETE FROM Notes WHERE idNote = @id", con))
+            {
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
+
+                var note = storedNotes.First(item => item.id == id);
+                storedNotes.Remove(note);
+                NotesForm.instance.RefreshNotes();
+            }
+        }
+
+        public void UpdateNote(Note note)
+        {
+            using (SqlCommand cmd = new SqlCommand(@"UPDATE Notes SET Title = @title, Content = @content WHERE idNote = @id", con))
+            {
+                cmd.Parameters.AddWithValue("id", note.id);
+                cmd.Parameters.AddWithValue("title", note.Title);
+                cmd.Parameters.AddWithValue("content", note.Content);
+                cmd.ExecuteNonQuery();
+            }
+
+            for (int i = 0; i < storedNotes.Count; ++i)
+            {
+                Note n = storedNotes.ElementAt(i);
+                if (n.id == note.id)
+                {
+                    storedNotes.RemoveAt(i);
+                }
+            }
+            storedNotes.Add(note);
+
+            NotesForm.instance.RefreshNotes();
+        }
     }
 
 }
@@ -96,3 +170,10 @@ public struct EventDate
     public int Month;
     public int Day;
 };
+
+public struct Note
+{
+    public int id;
+    public string Title;
+    public string Content;
+}
