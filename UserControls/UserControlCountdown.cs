@@ -36,6 +36,9 @@ namespace UtilitySharp.UserControls
 
             eventsDropdown.BackColor = stinst.controlsColor;
             eventsDropdown.ForeColor = stinst.controlsFontColor;
+
+            timeDisplay.BackColor = stinst.backColor;
+            timeDisplay.ForeColor = stinst.backFontColor;
         }
 
         private void UserControlCountdown_Load(object sender, EventArgs e)
@@ -53,7 +56,7 @@ namespace UtilitySharp.UserControls
             int id = eventsDropdown.SelectedIndex;
             EventDate ev = events.ElementAt(id);
 
-            eventToDateTime = new DateTime(ev.Year, ev.Month, ev.Day);
+            eventToDateTime = ev.Date;
 
             if (DateTime.Now < eventToDateTime)
                 StartTimer();

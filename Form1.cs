@@ -15,6 +15,7 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Point = System.Drawing.Point;
 using Microsoft.Win32;
 using Application = System.Windows.Forms.Application;
+using System.Security.AccessControl;
 
 namespace UtilitySharp
 {
@@ -23,6 +24,13 @@ namespace UtilitySharp
         public static Form1 instance;
         public DatabaseManager dbInstance;
         public SettingsManager settingsInstance;
+
+        private Image calcImage;
+        private Image cldnImage;
+        private Image timerImage;
+        private Image notesImage;
+        private Image todoImage;
+        private Image settingsImage;
         public Form1()
         {
             instance = this;
@@ -31,7 +39,92 @@ namespace UtilitySharp
             dbInstance = new DatabaseManager();
             settingsInstance = new SettingsManager();
 
+            InitImages();
+
+            InitColors();
+
             SetStartup();
+
+            SetEventNotification();
+        }
+
+        private void SetEventNotification()
+        {
+            SetNextEventNotification();
+            Timer timer = new Timer();
+            timer.Interval = 50;
+            timer.Tick += new EventHandler(timer_tick);
+            timer.Start();
+        }
+
+        public void SetNextEventNotification()
+        {
+            EventDate _event = DatabaseManager.instance.storedEvents[DatabaseManager.instance.currentEventIndex];
+
+            systemTrayIcon.BalloonTipTitle = "UtilitySharp";
+            systemTrayIcon.BalloonTipText = _event.Name + " now(" + _event.Date + ")";
+            systemTrayIcon.Text = "UtilitySharp";
+        }
+        private void timer_tick(object sender, EventArgs e)
+        {
+            DateTime current = DateTime.Now;
+            DateTime _event = DatabaseManager.instance.storedEvents[DatabaseManager.instance.currentEventIndex].Date;
+
+            //Console.WriteLine(current - _event);
+
+            if (current >= _event)
+            {
+                //Console.WriteLine("time passed");
+                systemTrayIcon.ShowBalloonTip(1);
+                DatabaseManager.instance.currentEventIndex++;
+            }
+        }
+
+        private void InitImages()
+        {
+            calcImage = calcBtn.BackgroundImage;
+            cldnImage = cldnBtn.BackgroundImage;
+            timerImage = timerBtn.BackgroundImage;
+            notesImage = notesBtn.BackgroundImage;
+            todoImage = todoBtn.BackgroundImage;
+            settingsImage = settingsBtn.BackgroundImage;
+        }
+
+        public void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+
+            this.BackColor = stinst.backColor;
+
+            InitImage(calcBtn, calcImage);
+            InitImage(cldnBtn, cldnImage);
+            InitImage(timerBtn, timerImage);
+            InitImage(notesBtn, notesImage);
+            InitImage(todoBtn, todoImage);
+            InitImage(settingsBtn, settingsImage);
+        }
+
+        private void InitImage(Button btn, Image im)
+        {
+            Bitmap bitmap = new Bitmap(im);
+
+            Rectangle rect = new Rectangle(0, 0, 60, 60);
+
+            Bitmap cloneImage = bitmap.Clone(rect, System.Drawing.Imaging.PixelFormat.DontCare);
+
+            for(int i = 0; i < bitmap.Height; i++)
+                for(int j = 0; j < bitmap.Width; j++)
+                {
+                    Color pixelColor = bitmap.GetPixel(i, j);
+                    if (pixelColor == Color.FromArgb(255, 255, 255, 255))
+                        pixelColor = SettingsManager.instance.controlsColor;
+                    else
+                        pixelColor = SettingsManager.instance.controlsFontColor;
+
+                    cloneImage.SetPixel(i, j, pixelColor);
+                }
+
+            btn.BackgroundImage = cloneImage;
         }
 
         public void SetStartup()
@@ -53,15 +146,15 @@ namespace UtilitySharp
 
         private void Form1_Load(object sender, EventArgs e)
         { 
-            notifyIcon1.BalloonTipTitle = "UtilitySharp";
-            notifyIcon1.BalloonTipText = "I am now in system tray.";
-            notifyIcon1.Text = "UtilitySharp";
+            systemTrayIcon.BalloonTipTitle = "UtilitySharp";
+            systemTrayIcon.BalloonTipText = "I am now in system tray.";
+            systemTrayIcon.Text = "UtilitySharp";
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void systemTrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
-            notifyIcon1.Visible = true;
+            systemTrayIcon.Visible = true;
             WindowState = FormWindowState.Normal;
         }
 
@@ -73,12 +166,12 @@ namespace UtilitySharp
                     if (WindowState == FormWindowState.Minimized)
                     {
                         this.Hide();
-                        notifyIcon1.Visible = true;
-                        notifyIcon1.ShowBalloonTip(1);
+                        systemTrayIcon.Visible = true;
+                        systemTrayIcon.ShowBalloonTip(1);
                     }
                     else if (this.WindowState == FormWindowState.Normal)
                     {
-                        notifyIcon1.Visible = false;
+                        systemTrayIcon.Visible = false;
                     }
                 }
         }
@@ -90,17 +183,13 @@ namespace UtilitySharp
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /// WIP
+            settingsBtn_Click(sender, new EventArgs());
         }
 
-        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            /// WIP
-        }
 
         private void toDoListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            todoBtn_Click(sender, new EventArgs());
         }
 
         private void calcBtn_Click(object sender, EventArgs e)
@@ -161,6 +250,20 @@ namespace UtilitySharp
                 Form form = new SettingsForm();
                 form.ShowDialog();
             }
+        }
+
+        private void todoBtn_Click(object sender, EventArgs e)
+        {
+            if(ToDoForm.instance == null)
+            {
+                Form form = new ToDoForm();
+                form.Show();
+            }
+        }
+
+        private void notesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            notesBtn_Click(sender, new EventArgs());
         }
     }
 }

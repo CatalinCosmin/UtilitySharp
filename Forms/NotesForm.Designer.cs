@@ -60,6 +60,7 @@
             this.Controls.Add(this.addNoteBtn);
             this.Controls.Add(this.notesListPanel);
             this.Name = "NotesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NotesForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Close);
             this.ResumeLayout(false);

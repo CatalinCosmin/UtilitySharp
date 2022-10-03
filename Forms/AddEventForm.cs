@@ -23,18 +23,97 @@ namespace UtilitySharp.Forms
             month = _month;
             day = _day;
             InitializeComponent();
+            InitColors();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+
+            this.BackColor = stinst.backColor;
+
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = stinst.backFontColor;
+
+            txtNameInput.BackColor = stinst.controlsColor;
+            txtNameInput.ForeColor = stinst.controlsFontColor;
+
+            addBtn.BackColor = stinst.controlsColor;
+            addBtn.ForeColor = stinst.controlsFontColor;
+
+            lbError.Visible = false;
+            lbError.ForeColor = stinst.backFontColor;
+
+            label2.BackColor = Color.Transparent;
+            label2.ForeColor = stinst.backFontColor;
+
+            label3.BackColor = Color.Transparent;
+            label3.ForeColor = stinst.backFontColor;
+
+            label4.BackColor = Color.Transparent;
+            label4.ForeColor = stinst.backFontColor;
+
+            hourInput.BackColor = stinst.controlsColor;
+            hourInput.ForeColor = stinst.controlsFontColor;
+
+            minuteInput.BackColor = stinst.controlsColor;
+            minuteInput.ForeColor = stinst.controlsFontColor;
+
+            secondInput.BackColor = stinst.controlsColor;
+            secondInput.ForeColor = stinst.controlsFontColor;
+
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
         {
             EventDate ev = new EventDate();
-            ev.Year = year;
-            ev.Month = month;
-            ev.Day = day;
-            ev.Name = txtNameInput.Text;
-            DatabaseManager.instance.AddEvent(ev);
-            parent.RefreshContent();
-            this.Close();
+
+            int hour, minute, second;
+
+            try
+            {
+                hour = Convert.ToInt32(hourInput.Text);
+            }
+            catch (Exception)
+            {
+                hour = 0;
+            }
+
+            try
+            {
+                minute = Convert.ToInt32(minuteInput.Text);
+            }
+            catch (Exception)
+            {
+                minute = 0;
+            }
+
+            try
+            {
+                second = Convert.ToInt32(secondInput.Text);
+            }
+            catch (Exception)
+            {
+                second = 0;
+            }
+
+            lbError.Visible = false;
+
+            try
+            {
+                ev.Date = new DateTime(year, month, day, hour, minute, second);
+
+                ev.Name = txtNameInput.Text;
+                DatabaseManager.instance.AddEvent(ev);
+
+                parent.RefreshContent();
+
+                this.Close();
+            }
+            catch(Exception)
+            {
+                lbError.Visible = true;
+            }
         }
     }
 }

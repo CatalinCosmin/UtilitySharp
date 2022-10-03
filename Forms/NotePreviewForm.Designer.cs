@@ -91,6 +91,7 @@
             this.Controls.Add(this.contentDisplay);
             this.Controls.Add(this.titleDisplay);
             this.Name = "NotePreviewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NotePreviewForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Close);
             this.Load += new System.EventHandler(this.NotePreviewForm_Load);

@@ -83,7 +83,7 @@
             // stopwatchBtn
             // 
             this.stopwatchBtn.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopwatchBtn.Location = new System.Drawing.Point(0, 88);
+            this.stopwatchBtn.Location = new System.Drawing.Point(29, 88);
             this.stopwatchBtn.Name = "stopwatchBtn";
             this.stopwatchBtn.Size = new System.Drawing.Size(115, 28);
             this.stopwatchBtn.TabIndex = 2;
@@ -94,7 +94,7 @@
             // countdownBtn
             // 
             this.countdownBtn.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countdownBtn.Location = new System.Drawing.Point(137, 88);
+            this.countdownBtn.Location = new System.Drawing.Point(166, 88);
             this.countdownBtn.Name = "countdownBtn";
             this.countdownBtn.Size = new System.Drawing.Size(115, 28);
             this.countdownBtn.TabIndex = 3;
@@ -112,6 +112,7 @@
             this.Controls.Add(this.functionsPanel);
             this.Controls.Add(this.liveHourPanel);
             this.Name = "TimerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TimerForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Close);
             this.liveHourPanel.ResumeLayout(false);

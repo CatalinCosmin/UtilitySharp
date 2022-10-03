@@ -127,6 +127,12 @@
     <Compile Include="Forms\TimerForm.Designer.cs">
       <DependentUpon>TimerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ToDoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToDoForm.Designer.cs">
+      <DependentUpon>ToDoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UserControlBlank.cs">
@@ -171,6 +177,12 @@
     <Compile Include="UserControls\UserControlStopwatch.Designer.cs">
       <DependentUpon>UserControlStopwatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlToDo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlToDo.Designer.cs">
+      <DependentUpon>UserControlToDo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TimerForm.resx">
       <DependentUpon>TimerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToDoForm.resx">
+      <DependentUpon>ToDoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -228,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlStopwatch.resx">
       <DependentUpon>UserControlStopwatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlToDo.resx">
+      <DependentUpon>UserControlToDo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="config.cfg" />
     <None Include="databaseDataSet.xsc">
@@ -286,6 +304,24 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\calc_icon_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\calendar_icon_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\timer_icon_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\notes_icon_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\todo_icon_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\settings_icon_default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

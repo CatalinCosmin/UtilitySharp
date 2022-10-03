@@ -24,3 +24,5 @@ D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlNotePrev
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.NotePreviewForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.SettingsForm.resources
 D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlColorPicker.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.Forms.ToDoForm.resources
+D:\projects\UtilitySharp\obj\Debug\UtilitySharp.UserControls.UserControlToDo.resources

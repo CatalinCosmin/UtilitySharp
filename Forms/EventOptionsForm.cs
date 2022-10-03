@@ -38,6 +38,19 @@ namespace UtilitySharp.Forms
             month = _month;
             day = _day;
             InitializeComponent();
+            InitColors();
+        }
+
+        private void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+
+            this.BackColor = stinst.backColor;
+
+            eventsListPanel.BackColor = stinst.backColor;
+
+            button1.BackColor = stinst.controlsColor;
+            button1.ForeColor = stinst.controlsFontColor;
         }
 
         private void EventOptionsForm_Load(object sender, EventArgs e)
@@ -50,7 +63,7 @@ namespace UtilitySharp.Forms
             eventsListPanel.Controls.Clear();
             foreach (EventDate eventDate in DatabaseManager.instance.storedEvents)
             {
-                if (eventDate.Year == year && eventDate.Month == month && eventDate.Day == day)
+                if (eventDate.Date.Year == year && eventDate.Date.Month == month && eventDate.Date.Day == day)
                 {
                     UserControlEventOptions ucevent = new UserControlEventOptions(eventDate);
                     eventsListPanel.Controls.Add(ucevent);

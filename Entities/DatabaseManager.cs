@@ -18,10 +18,13 @@ namespace UtilitySharp.Entities
         public SqlConnection con;
 
         public List<EventDate> storedEvents = new List<EventDate>();
+        public int currentEventIndex;
 
         public bool[,,] eventExists = new bool[2150, 13, 32];
 
         public List<Note> storedNotes = new List<Note>();
+
+        public List<ToDo> storedToDo = new List<ToDo>();
 
         
         public DatabaseManager()
@@ -31,12 +34,13 @@ namespace UtilitySharp.Entities
             con.Open();
             InitEvents();
             InitNotes();
+            InitToDo();
         }
 
         private void InitEvents()
         {
 
-            using (SqlCommand cmd = new SqlCommand(@"SELECT * FROM Events", con))
+            using (SqlCommand cmd = new SqlCommand(@"SELECT * FROM Events ORDER BY Date", con))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -46,28 +50,35 @@ namespace UtilitySharp.Entities
                             EventDate e = new EventDate();
                             e.id = reader.GetInt32(0);
                             e.Name = reader.GetString(1);
-                            e.Year = reader.GetInt32(2);
-                            e.Month = reader.GetInt32(3);
-                            e.Day = reader.GetInt32(4);
+                            e.Date = Convert.ToDateTime(reader.GetDateTime(2));
 
-                            eventExists[e.Year, e.Month, e.Day] = true;
+                            eventExists[e.Date.Year, e.Date.Month, e.Date.Day] = true;
 
                             storedEvents.Add(e);
                         }
                 }
             }
+
+            currentEventIndex = 0;
+            while (storedEvents[currentEventIndex].Date < DateTime.Now)
+                currentEventIndex++;
+
         }
 
         public void AddEvent(EventDate e)
         {
-            storedEvents.Add(e);
+            int index = 0;
+            while (storedEvents[index].Date < e.Date)
+                index++;
+            storedEvents.Insert(index, e);
+            eventExists[e.Date.Year, e.Date.Month, e.Date.Day] = true;
 
-            using(SqlCommand cmd = new SqlCommand(@"INSERT INTO Events (Name, Year, Month, Day) VALUES (@name, @year, @month, @day)", DatabaseManager.instance.con))
+            Form1.instance.SetNextEventNotification();
+
+            using(SqlCommand cmd = new SqlCommand(@"INSERT INTO Events (Name, Date) VALUES (@name, @date); SELECT SCOPE_IDENTITY()", con))
             {
                 cmd.Parameters.AddWithValue("@name", e.Name);
-                cmd.Parameters.AddWithValue("@year", e.Year);
-                cmd.Parameters.AddWithValue("@month", e.Month);
-                cmd.Parameters.AddWithValue("@day", e.Day);
+                cmd.Parameters.AddWithValue("@date", e.Date);
 
                 int insertedID = Convert.ToInt32(cmd.ExecuteScalar());
                 e.id = insertedID;
@@ -111,16 +122,17 @@ namespace UtilitySharp.Entities
 
         public void AddNote(Note note)
         {
-            storedNotes.Add(note);
-            using (SqlCommand cmd = new SqlCommand(@"INSERT INTO Notes (Title, Content) VALUES (@title, @content)", DatabaseManager.instance.con))
+            using (SqlCommand cmd = new SqlCommand(@"INSERT INTO Notes (Title, Content) VALUES (@title, @content); SELECT SCOPE_IDENTITY()", DatabaseManager.instance.con))
             {
                 cmd.Parameters.AddWithValue("@title", note.Title);
                 cmd.Parameters.AddWithValue("@content", note.Content);
 
                 int insertedID = Convert.ToInt32(cmd.ExecuteScalar());
                 note.id = insertedID;
-                NotesForm.instance.RefreshNotes();
+                
             }
+            storedNotes.Add(note);
+            NotesForm.instance.RefreshNotes();
         }
 
         public void RemoveNote(int id)
@@ -151,29 +163,111 @@ namespace UtilitySharp.Entities
                 Note n = storedNotes.ElementAt(i);
                 if (n.id == note.id)
                 {
-                    storedNotes.RemoveAt(i);
+                    n.Title = note.Title;
+                    n.Content = note.Content;
                 }
             }
-            storedNotes.Add(note);
 
             NotesForm.instance.RefreshNotes();
+        }
+
+
+        private void InitToDo()
+        {
+            using (SqlCommand cmd = new SqlCommand(@"SELECT * FROM ToDo", con))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            ToDo t = new ToDo();
+                            t.id = reader.GetInt32(0);
+                            t.Text = reader.GetString(1);
+                            t.isChecked = reader.GetBoolean(2);
+
+                            storedToDo.Add(t);
+                        }
+                }
+            }
+        }
+
+
+        public void AddToDo(ToDo t)
+        {
+            t.Text = "";
+            t.isChecked = false;
+            using(SqlCommand cmd = new SqlCommand(@"INSERT INTO ToDo (Text, Checked) VALUES (@text, @checked); SELECT SCOPE_IDENTITY()", con))
+            {
+                cmd.Parameters.AddWithValue("@text", t.Text);
+                cmd.Parameters.AddWithValue("@checked", t.isChecked);
+
+                int insertedID = Convert.ToInt32(cmd.ExecuteScalar());
+                t.id = insertedID;
+
+                Console.WriteLine(t.id);
+                storedToDo.Add(t);
+            }
+        }
+
+        public void RemoveToDo(int id)
+        {
+            using (SqlCommand cmd = new SqlCommand(@"DELETE FROM ToDo WHERE idToDo = @id", con))
+            {
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
+
+                var todo = storedToDo.First(item => item.id == id);
+                storedToDo.Remove(todo);
+                ToDoForm.instance.RefreshContent();
+            }
+        }
+
+        public void UpdateToDo(ToDo t)
+        {
+            using (SqlCommand cmd = new SqlCommand(@"UPDATE ToDo SET Text = @text, Checked = @checked WHERE idToDo = @id", con))
+            {
+                cmd.Parameters.AddWithValue("id", t.id);
+                cmd.Parameters.AddWithValue("text", t.Text);
+                cmd.Parameters.AddWithValue("checked", t.isChecked);
+                cmd.ExecuteNonQuery();
+            }
+
+            
+
+            for (int i = 0; i < storedToDo.Count; ++i)
+            {
+                ToDo todo = storedToDo.ElementAt(i);
+                if (todo.id == t.id)
+                {
+                    todo.Text = t.Text + " " + todo.id;
+                    todo.isChecked = t.isChecked;
+                }
+            }
+
+            ToDoForm.instance.RefreshContent();
         }
     }
 
 }
 
-public struct EventDate
+public class EventDate
 {
     public int id;
     public string Name;
-    public int Year;
-    public int Month;
-    public int Day;
+    public DateTime Date;
 };
 
-public struct Note
+public class Note
 {
     public int id;
     public string Title;
     public string Content;
-}
+};
+
+public class ToDo
+{
+    public int id;
+    public string Text;
+    public bool isChecked;
+};

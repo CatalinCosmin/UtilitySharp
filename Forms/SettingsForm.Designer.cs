@@ -162,6 +162,7 @@
             // 
             // settingsPanel
             // 
+            this.settingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.settingsPanel.Location = new System.Drawing.Point(12, 173);
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.Size = new System.Drawing.Size(727, 214);
@@ -169,12 +170,13 @@
             // 
             // previewPanel
             // 
+            this.previewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.previewPanel.Controls.Add(this.previewHighlightedBtn);
             this.previewPanel.Controls.Add(this.previewControlBtn);
             this.previewPanel.Controls.Add(this.lbPreviewBackgroundFont);
             this.previewPanel.Location = new System.Drawing.Point(760, 173);
             this.previewPanel.Name = "previewPanel";
-            this.previewPanel.Size = new System.Drawing.Size(213, 214);
+            this.previewPanel.Size = new System.Drawing.Size(227, 214);
             this.previewPanel.TabIndex = 6;
             this.previewPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -226,7 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 437);
+            this.ClientSize = new System.Drawing.Size(999, 437);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.previewPanel);
             this.Controls.Add(this.settingsPanel);
@@ -236,6 +238,7 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Name = "SettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Close);
             this.flowLayoutPanel1.ResumeLayout(false);

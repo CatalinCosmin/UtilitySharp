@@ -60,6 +60,7 @@ namespace UtilitySharp.Entities
             string[] color5 = ConfigurationManager.AppSettings.Get("BackFontColor").Split();
             var color5ints = color5.Select(item => int.Parse(item)).ToArray();
             backFontColor = Color.FromArgb(255, color5ints[0], color5ints[1], color5ints[2]);
+
         }
 
         public void OnSave()
@@ -81,6 +82,7 @@ namespace UtilitySharp.Entities
             SettingsManager.instance.InitFromCfg();
 
             Form1.instance.SetStartup();
+            Form1.instance.InitColors();
         }
     }
 }

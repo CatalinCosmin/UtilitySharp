@@ -29,7 +29,12 @@ namespace UtilitySharp.Forms
             instance = this;
             InitializeComponent();
             InitColorPreview();
+            InitColors();
+            InitSettings();
+        }
 
+        private void InitSettings()
+        {
             SettingsManager stinst = SettingsManager.instance;
 
             runOnStartup = stinst.runOnStartup;
@@ -42,6 +47,44 @@ namespace UtilitySharp.Forms
 
             checkBox1.Checked = runOnStartup;
             checkBox2.Checked = systemTray;
+        }
+
+        private void InitColors()
+        {
+            SettingsManager stinst = SettingsManager.instance;
+
+            this.BackColor = stinst.backColor;
+
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = stinst.backFontColor;
+
+            label2.BackColor = Color.Transparent;
+            label2.ForeColor = stinst.backFontColor;
+
+            checkBox1.BackColor = stinst.controlsColor;
+            checkBox2.BackColor = stinst.controlsColor;
+
+            flowLayoutPanel1.BackColor = stinst.backColor;
+
+            button1.BackColor = stinst.controlsColor;
+            button1.ForeColor = stinst.controlsFontColor;
+
+            button2.BackColor = stinst.controlsColor;
+            button2.ForeColor = stinst.controlsFontColor;
+
+            button3.BackColor = stinst.controlsColor;
+            button3.ForeColor = stinst.controlsFontColor;
+
+            button4.BackColor = stinst.controlsColor;
+            button4.ForeColor = stinst.controlsFontColor;
+
+            button5.BackColor = stinst.controlsColor;
+            button5.ForeColor = stinst.controlsFontColor;
+
+            settingsPanel.BackColor = stinst.backColor;
+
+            saveBtn.BackColor = stinst.controlsColor;
+            saveBtn.ForeColor = stinst.controlsFontColor;
         }
 
         private void InitColorPreview()
@@ -136,6 +179,7 @@ namespace UtilitySharp.Forms
         private void saveBtn_Click(object sender, EventArgs e)
         {
             SettingsManager.instance.OnSave();
+            InitSettings();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
